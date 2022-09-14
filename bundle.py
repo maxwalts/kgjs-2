@@ -7,9 +7,9 @@ js_directories = [
     'build/bundled/',
     'docs/js/',
     'docs/playground/code/',
-    '../bh-textbook/code/',
+    # '../bh-textbook/code/',
     #'../core-interactives/code/',
-    '../econgraphs/static/js/'
+    # '../econgraphs/static/js/'
 ]
 
 js_local_directories = [
@@ -22,9 +22,9 @@ css_directories = [
     'build/bundled/',
     'docs/css/',
     'docs/playground/code/',
-    '../bh-textbook/code/',
+    # '../bh-textbook/code/',
     #'../core-interactives/code/',
-    '../econgraphs/static/css/'
+    # '../econgraphs/static/css/'
 ]
 
 bundles = [
@@ -39,18 +39,18 @@ bundles = [
             "node_modules/js-yaml/dist/js-yaml.min.js"
         ]
     },
-    {
-        "name": "kg3d-lib.js",
-        "dest_directories": ["build/lib/"],
-        "order": [
-            "node_modules/katex/dist/katex.min.js",
-            "node_modules/katex/dist/contrib/auto-render.min.js",
-            "node_modules/d3/dist/d3.min.js",
-            "node_modules/mathjs/dist/math.min.js",
-            "node_modules/js-yaml/dist/js-yaml.min.js",
-            "build/lib/mathbox-bundle.min.js"
-        ]
-    },
+    # {
+    #     "name": "kg3d-lib.js",
+    #     "dest_directories": ["build/lib/"],
+    #     "order": [
+    #         "node_modules/katex/dist/katex.min.js",
+    #         "node_modules/katex/dist/contrib/auto-render.min.js",
+    #         "node_modules/d3/dist/d3.min.js",
+    #         "node_modules/mathjs/dist/math.min.js",
+    #         "node_modules/js-yaml/dist/js-yaml.min.js",
+    #         "build/lib/mathbox-bundle.min.js"
+    #     ]
+    # },
     {
         "name": "kg-lib.css",
         "dest_directories": ["build/lib/"],
@@ -58,14 +58,15 @@ bundles = [
             "node_modules/katex/dist/katex.min.css"
         ]
     },
-    {
-        "name": "kg-tufte.css",
-        "dest_directories": ["build/lib/"],
-        "order": [
-            "node_modules/katex/dist/katex.min.css",
-            "node_modules/tufte-css/tufte.min.css"
-        ]
-    },
+    # {
+    #     "name": "kg-tufte.css",
+    #     "dest_directories": ["build/lib/"],
+    #     "order": [
+    #         "node_modules/katex/dist/katex.min.css",
+    #         "node_modules/tufte-css/tufte.min.css"
+    #     ]
+    # },
+    # uses kg-lib.js and build/kg.js
     {
         "name": "kg.0.2.6.js",
         "dest_directories": js_directories,
@@ -74,14 +75,14 @@ bundles = [
             "build/kg.js"
         ]
     },
-    {
-        "name": "kg3d.0.2.6.js",
-        "dest_directories": js_directories,
-        "order": [
-            "build/lib/kg3d-lib.js",
-            "build/kg.js"
-        ]
-    },
+    # {
+    #     "name": "kg3d.0.2.6.js",
+    #     "dest_directories": js_directories,
+    #     "order": [
+    #         "build/lib/kg3d-lib.js",
+    #         "build/kg.js"
+    #     ]
+    # },
     {
         "name": "kg-lib.js",
         "dest_directories": js_local_directories,
@@ -89,13 +90,13 @@ bundles = [
             "build/lib/kg-lib.js"
         ]
     },
-    {
-        "name": "kg3d-lib.js",
-        "dest_directories": js_local_directories,
-        "order": [
-            "build/lib/kg3d-lib.js"
-        ]
-    },
+    # {
+    #     "name": "kg3d-lib.js",
+    #     "dest_directories": js_local_directories,
+    #     "order": [
+    #         "build/lib/kg3d-lib.js"
+    #     ]
+    # },
 
     {
         "name": "kg.js",
@@ -119,25 +120,25 @@ bundles = [
             "build/kg.css"
         ]
     },
-    {
-        "name": "kg-tufte.0.2.6.css",
-        "dest_directories": css_directories,
-        "order": [
-            "node_modules/katex/dist/katex.min.css",
-            "node_modules/tufte-css/tufte.min.css",
-            "build/kg.css"
-        ]
-    }
+    # {
+    #     "name": "kg-tufte.0.2.6.css",
+    #     "dest_directories": css_directories,
+    #     "order": [
+    #         "node_modules/katex/dist/katex.min.css",
+    #         "node_modules/tufte-css/tufte.min.css",
+    #         "build/kg.css"
+    #     ]
+    # }
 ]
 
 for bundle in bundles:
     for dest_directory in bundle['dest_directories']:
         result = ''
         bundle_name = bundle['name']
-        print 'Processing bundle ' + bundle_name + '\n'
+        print ('Processing bundle ' + bundle_name + '\n')
         for file_name in bundle['order']:
             with codecs.open(file_name, 'r', encoding='utf8') as infile:
-                print '  Appending ' + file_name + '\n'
+                print ('  Appending ' + file_name + '\n')
                 result += infile.read() + "\n\n"
                 infile.close()
         with codecs.open(dest_directory + bundle_name, 'w', encoding='utf8') as outfile:

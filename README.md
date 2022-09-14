@@ -1,3 +1,8 @@
+# How to use
+bundle.py to bundle the js and css
+
+
+
 # kg.js
 Javascript Renderer for KineticGraphs
 
