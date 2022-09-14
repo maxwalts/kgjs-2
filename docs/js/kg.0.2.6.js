@@ -1865,7 +1865,7 @@ var KGAuthor;
                         x: graph.xScale.min,
                         y: KGAuthor.averageDefs(graph.yScale.min, graph.yScale.max),
                         xPixelOffset: -1 * def.xPixelOffset,
-                        rotate: 90
+                        // rotate: 90
                     }, graph));
                 }
                 else if (def.orient == 'top') {

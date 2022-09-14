@@ -68,7 +68,7 @@ bundles = [
     # },
     # uses kg-lib.js and build/kg.js
     {
-        "name": "kg.0.2.6.js",
+        "name": "kg.0.2.7.js",
         "dest_directories": js_directories,
         "order": [
             "build/lib/kg-lib.js",

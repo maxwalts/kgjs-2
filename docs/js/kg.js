@@ -1806,9 +1806,11 @@ var KGAuthor;
                     a.subObjects.push(new KGAuthor.Label({
                         text: "\\text{".concat(def.title, "}"),
                         x: graph.xScale.min,
-                        y: KGAuthor.averageDefs(graph.yScale.min, graph.yScale.max),
-                        xPixelOffset: -1 * def.xPixelOffset,
-                        rotate: 90
+                        // y: KGAuthor.averageDefs(graph.yScale.min, graph.yScale.max),
+                        y: graph.yScale.max,
+                        // xPixelOffset: -1 * def.xPixelOffset,
+                        xPixelOffset: 0,
+                        // rotate: 90
                     }, graph));
                 }
                 else if (def.orient == 'top') {
